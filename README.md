@@ -89,6 +89,6 @@ github-sentinel start
 2. 添加适当的测试
 3. 更新相关文档
 
-## �� 许可证
+## ⚖️ 许可证
 
 MIT License
