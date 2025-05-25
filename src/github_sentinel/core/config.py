@@ -1,6 +1,7 @@
 from pathlib import Path
 from typing import Dict, List, Optional
 
+import yaml
 from pydantic import BaseModel, Field
 
 
@@ -35,11 +36,22 @@ class Config(BaseModel):
 
 def load_config(config_path: Path) -> Config:
     """加载配置文件"""
-    # TODO: 实现配置文件加载逻辑
-    pass
+    if not config_path.exists():
+        raise FileNotFoundError(f"配置文件不存在: {config_path}")
+
+    with open(config_path, "r", encoding="utf-8") as f:
+        config_data = yaml.safe_load(f)
+
+    return Config(**config_data)
 
 
 def save_config(config: Config, config_path: Path) -> None:
     """保存配置文件"""
-    # TODO: 实现配置文件保存逻辑
-    pass 
+    config_path.parent.mkdir(parents=True, exist_ok=True)
+    
+    config_data = config.dict()
+    # 将 Path 对象转换为字符串
+    config_data["data_dir"] = str(config_data["data_dir"])
+    
+    with open(config_path, "w", encoding="utf-8") as f:
+        yaml.safe_dump(config_data, f, allow_unicode=True, sort_keys=False) 
