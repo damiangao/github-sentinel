@@ -16,6 +16,10 @@
 - 仓库订阅管理 (`subscribe`)
 - 监控启动 (`start`)
 
+### 进阶特性
+- 支持对 GitHub 仓库数据抓取数量进行限制，提升大仓库兼容性和执行效率
+- 自动处理时区差异，兼容不同时间格式
+
 ## 📦 技术栈
 - Python 3.8+
 - PyGithub
@@ -68,6 +72,9 @@ github-sentinel subscribe owner/repo
 ```bash
 github-sentinel start
 ```
+
+5. （可选）自定义数据抓取数量
+如需在脚本或集成中限制抓取的提交、Issue、PR、Release数量，可通过 `max_count` 参数设置，避免大仓库超时。
 
 ## 🤝 贡献指南
 
