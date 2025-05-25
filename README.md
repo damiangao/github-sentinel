@@ -30,6 +30,12 @@
 
 ## 🔧 配置选项
 - GitHub Token 配置
+  - 在 GitHub 个人设置中生成 Personal Access Token (Settings -> Developer settings -> Personal access tokens)
+  - 运行 `github-sentinel init` 时输入 token，或手动编辑配置文件
+  - Token 需要以下权限：
+    - `repo` (完整仓库访问权限)
+    - `notifications` (通知访问权限)
+    - `read:org` (组织访问权限，如果需要监控组织仓库)
 - 仓库订阅管理
 - 通知方式设置（邮件/Slack/Webhook）
 - 监控频率设置
